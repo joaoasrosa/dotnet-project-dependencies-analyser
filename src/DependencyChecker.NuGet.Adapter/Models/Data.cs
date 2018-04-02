@@ -13,10 +13,8 @@ namespace DependencyChecker.NuGet.Adapter.Models
             Version = version;
         }
 
-        [JsonProperty]
-        internal string Id { get; }
+        [JsonProperty] internal string Id { get; }
 
-        [JsonProperty]
-        internal string Version { get; }
+        [JsonProperty] internal string Version { get; }
     }
 }

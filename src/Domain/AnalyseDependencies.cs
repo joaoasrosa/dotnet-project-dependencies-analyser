@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DotnetProjectDependenciesAnalyser.Domain
+﻿namespace DotnetProjectDependenciesAnalyser.Domain
 {
     public class AnalyseDependencies
     {
@@ -11,13 +9,13 @@ namespace DotnetProjectDependenciesAnalyser.Domain
         {
             _analyserServicesFactory = analyserServicesFactory;
         }
-        
+
         public Report Execute(
             AnalyseDependenciesSettings settings)
         {
-            if(settings == null)
+            if (settings == null)
                 throw new SettingsAreNull("The analyse dependencies settings are null.");
-            
+
             if (settings.SettingsAreValid() == false)
                 throw new SettingsAreInvalid("The analyse dependencies settings are invalid.");
 

@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using DotnetProjectDependenciesAnalyser.Domain;
@@ -101,7 +100,7 @@ namespace Domain.Tests.Unit
             var settings = Given.AnalyseDependenciesSettings
                 .WithFolder((Folder) $"./{Guid.NewGuid()}/")
                 .Build();
-            
+
             Given.CsProject
                 .WithNewFormat()
                 .WithName("Dummy.csproj")
@@ -124,12 +123,12 @@ namespace Domain.Tests.Unit
             var settings = Given.AnalyseDependenciesSettings
                 .WithFolder((Folder) $"./{Guid.NewGuid()}/")
                 .Build();
-            
+
             Given.CsProject
                 .WithNewFormat()
                 .WithName("Foo.csproj")
                 .CreateAt(settings.Folder.Value);
-            
+
             Given.CsProject
                 .WithNewFormat()
                 .WithName("Bar.csproj")

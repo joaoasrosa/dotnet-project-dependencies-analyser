@@ -52,7 +52,7 @@ namespace Domain.Tests.Unit.Builders
             CancellationToken cancellationToken)
         {
             _responses.TryGetValue(
-                request.RequestUri, 
+                request.RequestUri,
                 out var response);
 
             return Task.FromResult(response);

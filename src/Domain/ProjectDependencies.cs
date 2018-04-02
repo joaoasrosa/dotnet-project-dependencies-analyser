@@ -25,7 +25,9 @@ namespace DotnetProjectDependenciesAnalyser.Domain
             _dependencies.Add(
                 new DependencyReport(
                     dependency,
-                    latestVersion));
+                    latestVersion
+                )
+            );
         }
     }
 }

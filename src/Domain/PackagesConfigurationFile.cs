@@ -30,9 +30,12 @@ namespace DotnetProjectDependenciesAnalyser.Domain
         {
             var dependencies = new List<Dependency>(Packages.Count);
             dependencies.AddRange(Packages.Select(package =>
-                new Dependency(
-                    (Name) package.Id,
-                    SemVersion.Parse(package.Version))));
+                    new Dependency(
+                        (Name) package.Id,
+                        SemVersion.Parse(package.Version)
+                    )
+                )
+            );
 
             return dependencies;
         }

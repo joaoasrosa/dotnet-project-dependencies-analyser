@@ -14,7 +14,7 @@ namespace Domain.Tests.Unit.Builders
 
         public Uri Build()
         {
-            return  new Uri(_url);
+            return new Uri(_url);
         }
     }
 }

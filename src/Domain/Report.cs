@@ -40,7 +40,8 @@ namespace DotnetProjectDependenciesAnalyser.Domain
 
             projectDependencies.AddDependency(
                 dependency,
-                version);
+                version
+            );
         }
     }
 }

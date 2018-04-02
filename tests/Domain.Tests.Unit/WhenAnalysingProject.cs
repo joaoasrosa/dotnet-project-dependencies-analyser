@@ -70,16 +70,16 @@ namespace Domain.Tests.Unit
 
             return tuple;
         }
-        
+
         [Fact]
         public void GivenProjectWithOutdatedDependency_ReportContainsOutdatedDependency()
         {
             var subfolder = $"./{Guid.NewGuid()}";
-            
+
             var settings = Given.AnalyseDependenciesSettings
-                .WithProject((File)$"{subfolder}/Dummy/Dummy.csproj")
+                .WithProject((File) $"{subfolder}/Dummy/Dummy.csproj")
                 .Build();
-            
+
             Given.CsProject
                 .WithNewFormat()
                 .WithName("Dummy.csproj")

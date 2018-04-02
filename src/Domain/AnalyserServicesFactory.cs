@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DotnetProjectDependenciesAnalyser.Domain
+﻿namespace DotnetProjectDependenciesAnalyser.Domain
 {
     public class AnalyserServicesFactory
     {
@@ -11,19 +9,21 @@ namespace DotnetProjectDependenciesAnalyser.Domain
         {
             _dependencyChecker = dependencyChecker;
         }
-        
+
         internal IAnalyserService CreateService(
             AnalyseDependenciesSettings settings)
         {
             if (settings.Folder.HasValue)
                 return new FolderAnalyserService(
                     settings.Folder.Value,
-                    _dependencyChecker);
-            
+                    _dependencyChecker
+                );
+
             if (settings.Project.HasValue)
                 return new ProjectAnalyserService(
                     settings.Project.Value,
-                    _dependencyChecker);
+                    _dependencyChecker
+                );
 
             throw new AnalyserServiceIsMissing();
         }

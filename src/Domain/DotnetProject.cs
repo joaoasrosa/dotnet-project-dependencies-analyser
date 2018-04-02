@@ -58,11 +58,13 @@ namespace DotnetProjectDependenciesAnalyser.Domain
 
             var dotnetProjects = new List<DotnetProject>(
                 projects.Length);
-            
+
             dotnetProjects.AddRange(
-                projects.Select(project => 
+                projects.Select(project =>
                     new DotnetProject(
-                        (File) project)));
+                        (File) project)
+                )
+            );
 
             return dotnetProjects;
         }

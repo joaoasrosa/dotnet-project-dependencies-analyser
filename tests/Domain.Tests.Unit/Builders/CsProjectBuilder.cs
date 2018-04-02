@@ -1,6 +1,4 @@
 ﻿using System.IO;
-using DotnetProjectDependenciesAnalyser.Domain;
-using File = System.IO.File;
 
 namespace Domain.Tests.Unit.Builders
 {

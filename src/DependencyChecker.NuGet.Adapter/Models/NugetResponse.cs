@@ -17,21 +17,19 @@ namespace DependencyChecker.NuGet.Adapter.Models
             Data = data;
         }
 
-        [JsonProperty]
-        internal int TotalHits { get; }
+        [JsonProperty] internal int TotalHits { get; }
 
-        [JsonProperty]
-        internal IReadOnlyCollection<Data> Data { get; }
+        [JsonProperty] internal IReadOnlyCollection<Data> Data { get; }
 
         internal Dependency? ToDomain()
         {
             var data = Data.FirstOrDefault();
-            
+
             if (data == null)
                 return null;
-            
+
             return new Dependency(
-                (Name)data.Id,
+                (Name) data.Id,
                 SemVersion.Parse(data.Version));
         }
     }

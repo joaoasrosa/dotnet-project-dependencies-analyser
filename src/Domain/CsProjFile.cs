@@ -33,8 +33,10 @@ namespace DotnetProjectDependenciesAnalyser.Domain
             foreach (var itemGroup in ItemGroups)
             foreach (var packageReference in itemGroup.PackageReferences)
                 dependencies.Add(new Dependency(
-                    (Name) packageReference.Include,
-                    SemVersion.Parse(packageReference.Version)));
+                        (Name) packageReference.Include,
+                        SemVersion.Parse(packageReference.Version)
+                    )
+                );
 
             return dependencies;
         }
@@ -50,10 +52,10 @@ namespace DotnetProjectDependenciesAnalyser.Domain
     [Serializable]
     public class PackageReference
     {
-        [XmlAttribute(AttributeName = "Include")] 
+        [XmlAttribute(AttributeName = "Include")]
         public string Include { get; set; }
 
-        [XmlAttribute(AttributeName = "Version")] 
+        [XmlAttribute(AttributeName = "Version")]
         public string Version { get; set; }
     }
 }
