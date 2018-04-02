@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyChecker.NuGet.Ada
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests.Unit", "tests\Domain.Tests.Unit\Domain.Tests.Unit.csproj", "{29974DED-1FAA-415F-8C42-B358E241213A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.DependenciesChecker", "src\Cake.DependenciesChecker\Cake.DependenciesChecker.csproj", "{F31B0D13-C036-4BD7-AACA-38E340BC0E35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.DependenciesAnalyser", "src\Cake.DependenciesAnalyser\Cake.DependenciesAnalyser.csproj", "{F31B0D13-C036-4BD7-AACA-38E340BC0E35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

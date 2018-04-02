@@ -18,7 +18,7 @@ var testsDir = Directory("./tests");
 var solutions = GetFiles("./**/*.sln");
 var projects = new []
 {
-    sourceDir.Path + "/Cake.DependenciesChecker/Cake.DependenciesChecker.csproj"
+    sourceDir.Path + "/Cake.DependenciesAnalyser/Cake.DependenciesAnalyser.csproj"
 };
 
 var unitTestsProjects = GetFiles(testsDir.Path + "/**/*.Tests.Unit.csproj");

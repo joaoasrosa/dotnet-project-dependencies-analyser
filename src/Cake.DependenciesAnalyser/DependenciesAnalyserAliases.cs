@@ -5,10 +5,10 @@ using Cake.Core.Annotations;
 using DependencyChecker.NuGet.Adapter;
 using DotnetProjectDependenciesAnalyser.Domain;
 
-namespace Cake.DependenciesChecker
+namespace Cake.DependenciesAnalyser
 {
-    [CakeAliasCategory("DependenciesChecker")]
-    public static class DependenciesCheckerAliases
+    [CakeAliasCategory("DependenciesAnalyser")]
+    public static class DependenciesAnalyserAliases
     {
         /// <summary>
         ///     Analyses a the dependencies of a project(s).
@@ -18,7 +18,7 @@ namespace Cake.DependenciesChecker
         [CakeMethodAlias]
         public static void AnalyseDependencies(
             this ICakeContext context,
-            DependenciesCheckerSettings settings)
+            DependenciesAnalyserSettings settings)
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
