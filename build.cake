@@ -1,7 +1,5 @@
 #tool "nuget:?package=GitVersion.CommandLine"
-#tool "nuget:?package=Newtonsoft.Json"
-#tool "nuget:?package=Semver"
-#addin "Cake.DependenciesAnalyser"
+#addin "nuget:?package=Cake.DependenciesAnalyser&version=0.1.3"
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -19,20 +17,17 @@ var sourceDir = Directory("./src");
 var testsDir = Directory("./tests");
 
 var solutions = GetFiles("./**/*.sln");
-var projects = new []
-{
-    sourceDir.Path + "/Cake.DependenciesAnalyser/Cake.DependenciesAnalyser.csproj"
-};
 
 var unitTestsProjects = GetFiles(testsDir.Path + "/**/*.Tests.Unit.csproj");
 
-var fullSemVer = "";
+GitVersion gitVersion = null;
 
 // USED TO CREATE NUGET PACKAGES
 var createPackage = false;
 
 // BUILD OUTPUT DIRECTORIES
 var artifactsDir = Directory("./artifacts");
+var publishDir = Directory("./publish/");
 
 // VERBOSITY
 var dotNetCoreVerbosity = Cake.Common.Tools.DotNetCore.DotNetCoreVerbosity.Detailed;
@@ -52,6 +47,7 @@ void Test(FilePathCollection testProjects)
 	{
 		Configuration = configuration,
 		NoBuild = true,
+        NoRestore = true,
         Verbosity = dotNetCoreVerbosity
 	};
 
@@ -99,6 +95,7 @@ Task("Clean")
         }
 
         CleanDirectory(artifactsDir);
+        CleanDirectory(publishDir);
     });
 
 
@@ -130,7 +127,7 @@ Task("SemVer")
             UpdateAssemblyInfo = true
         };
 
-        var gitVersion = GitVersion(settings);
+        gitVersion = GitVersion(settings);
 
         Information("NuGet v2: " + gitVersion.NuGetVersionV2);
         Information("Full SemVer: " + gitVersion.FullSemVer);
@@ -151,7 +148,13 @@ Task("SemVer")
             Information("SemVer applied to '{0}'...", project);
         }
 
-        fullSemVer = gitVersion.FullSemVer;
+        Information("Applying SemVer to 'nuspec'...");
+        XmlPoke(
+            sourceDir.Path + "/Cake.DependenciesAnalyser/Cake.DependenciesAnalyser.nuspec", 
+            "/package/metadata/version", 
+            gitVersion.NuGetVersionV2);
+        Information("SemVer applied to 'nuspec'...");
+        
     });
 
 Task("Build")
@@ -211,6 +214,35 @@ Task("Local-Pack")
         createPackage = true;
     });
 
+Task("Publish")
+    .Description("Publish the Web Application.")
+    .Does(() => 
+    {
+        if(!createPackage)
+        {
+            Information("Skipping the Publish step.");
+            return;
+        }
+
+	    var settings = new DotNetCorePublishSettings
+		{
+			Configuration = configuration,
+            NoRestore = true,
+            Framework = "netstandard2.0",
+			OutputDirectory = publishDir.Path + "/lib/netstandard2.0"
+		};
+
+        DotNetCorePublish(
+            sourceDir.Path + "/Cake.DependenciesAnalyser/Cake.DependenciesAnalyser.csproj", 
+            settings);
+
+        DeleteFiles(publishDir.Path + "/**/*.pdb");
+        MoveFile(
+            publishDir.Path + "/lib/netstandard2.0/Cake.DependenciesAnalyser.nuspec",
+            publishDir.Path + "/Cake.DependenciesAnalyser.nuspec"
+        );
+    });
+
 Task("Pack")
 	.Description("Packs all the different parts of the project.")
 	.Does(() => 
@@ -221,22 +253,15 @@ Task("Pack")
             return;
         }
 
-        var settings = new DotNetCorePackSettings 
-        {
-            Configuration = configuration,
-            IncludeSource = false,
-            IncludeSymbols = false,
-            Verbosity = dotNetCoreVerbosity,
-            NoBuild = true,
-            OutputDirectory = artifactsDir
-        };
+        var settings = new NuGetPackSettings
+		{
+			OutputDirectory = artifactsDir,
+			Version = gitVersion.NuGetVersionV2
+		};
 
-        foreach(var project in projects)
-        {
-            Information("Packing '{0}'...", project);
-            DotNetCorePack(project, settings);
-            Information("'{0}' has been packed.", project);
-        }
+        Information("Packing '{0}'...", publishDir);
+	    NuGetPack(publishDir.Path + "/Cake.DependenciesAnalyser.nuspec", settings);
+        Information("'{0}' has been packed.", publishDir);
     });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -278,8 +303,9 @@ Task("LocalPack")
     .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
-    .IsDependentOn("Dependencies-Analyse")
+    //.IsDependentOn("Dependencies-Analyse")
     .IsDependentOn("Local-Pack")
+    .IsDependentOn("Publish")
     .IsDependentOn("Pack")
     .Does(() => { Information("Everything is done! Well done AppVeyor."); });
 

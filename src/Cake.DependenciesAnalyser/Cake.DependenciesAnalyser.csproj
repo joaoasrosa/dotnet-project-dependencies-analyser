@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <IsPackable>true</IsPackable>
-        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
     </PropertyGroup>
     <PropertyGroup>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -15,10 +14,10 @@
         <IncludeSymbols>true</IncludeSymbols>
         <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
         <PackageReleaseNotes>See https://github.com/joaoasrosa/dotnet-project-dependencies-analyser/blob/master/ReleaseNotes.md</PackageReleaseNotes>
-        <PackageVersion>0.1.2</PackageVersion>
-        <AssemblyVersion>0.1.2</AssemblyVersion>
-        <FileVersion>0.1.2</FileVersion>
-        <Version>0.1.2</Version>
+        <PackageVersion>0.1.3</PackageVersion>
+        <AssemblyVersion>0.1.3</AssemblyVersion>
+        <FileVersion>0.1.3</FileVersion>
+        <Version>0.1.3</Version>
         <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
         <RepositoryUrl>https://github.com/joaoasrosa/dotnet-project-dependencies-analyser</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
@@ -29,12 +28,12 @@
         <PackageReference Include="Newtonsoft.Json" Version="11.0.2"/>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\DependencyChecker.NuGet.Adapter\DependencyChecker.NuGet.Adapter.csproj" PrivateAssets="all"/>
-        <ProjectReference Include="..\Domain\Domain.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\DependencyChecker.NuGet.Adapter\DependencyChecker.NuGet.Adapter.csproj"/>
+        <ProjectReference Include="..\Domain\Domain.csproj"/>
     </ItemGroup>
-    <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
     <ItemGroup>
-        <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))"/>
+        <Content Include="Cake.DependenciesAnalyser.nuspec">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
-    </Target>
 </Project>
