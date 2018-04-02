@@ -36,8 +36,8 @@ namespace Cake.DependenciesAnalyser
 
             var report = analyseDependencies.Execute(
                 new AnalyseDependenciesSettings(
-                    string.IsNullOrWhiteSpace(settings.Project) ? (File?) settings.Project : null,
-                    string.IsNullOrWhiteSpace(settings.Folder) ? (Folder?) settings.Folder : null
+                    string.IsNullOrWhiteSpace(settings.Project) ? null : (File?) settings.Project,
+                    string.IsNullOrWhiteSpace(settings.Folder) ? null : (Folder?) settings.Folder
                 )
             );
 

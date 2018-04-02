@@ -1,5 +1,5 @@
 #tool "nuget:?package=GitVersion.CommandLine"
-#addin "nuget:?package=Cake.DependenciesAnalyser&version=0.1.3"
+#addin "nuget:?package=Cake.DependenciesAnalyser&version=0.1.5"
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -191,7 +191,7 @@ Task("Dependencies-Analyse")
     {
         var settings = new DependenciesAnalyserSettings
         {
-            Folder = sourceDir.Path.ToString()
+            Folder = "./src/"
         };
 
         Information("Analysing dependencies on folder '{0}'...", sourceDir.Path);
@@ -256,7 +256,8 @@ Task("Pack")
         var settings = new NuGetPackSettings
 		{
 			OutputDirectory = artifactsDir,
-			Version = gitVersion.NuGetVersionV2
+			Version = gitVersion.NuGetVersionV2,
+            Symbols = true
 		};
 
         Information("Packing '{0}'...", publishDir);
@@ -307,7 +308,7 @@ Task("LocalPack")
     .IsDependentOn("Local-Pack")
     .IsDependentOn("Publish")
     .IsDependentOn("Pack")
-    .Does(() => { Information("Everything is done! Well done AppVeyor."); });
+    .Does(() => { Information("Everything is done! Well done Local Pack."); });
 
 Task("AppVeyor")
     .Description("Runs on AppVeyor after 'merging master'.")
