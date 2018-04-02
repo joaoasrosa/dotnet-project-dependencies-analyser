@@ -15,6 +15,7 @@ ProjectSection(SolutionItems) = preProject
 	build.ps1 = build.ps1
 	build.sh = build.sh
 	build.cake = build.cake
+	appveyor.yml = appveyor.yml
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{BD83FF11-B91E-4467-BFBC-0FC0EFC40EA1}"
