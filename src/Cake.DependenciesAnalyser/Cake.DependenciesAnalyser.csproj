@@ -4,7 +4,7 @@
     </PropertyGroup>
     <PropertyGroup>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageId>Cake.DependenciesChecker</PackageId>
+        <PackageId>Cake.DependenciesAnalyser</PackageId>
         <Authors>João Rosa</Authors>
         <Description>Cake Build addin for check the dependencies of a project.</Description>
         <PackageProjectUrl>https://github.com/joaoasrosa/dotnet-project-dependencies-analyser</PackageProjectUrl>
