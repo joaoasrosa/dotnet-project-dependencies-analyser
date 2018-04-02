@@ -1,4 +1,7 @@
 #tool "nuget:?package=GitVersion.CommandLine"
+#tool "nuget:?package=Newtonsoft.Json"
+#tool "nuget:?package=Semver"
+#addin "Cake.DependenciesAnalyser"
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -179,12 +182,33 @@ Task("Test-Unit")
     .Description("Runs all your unit tests, using dotnet CLI.")
     .Does(() => { Test(unitTestsProjects); });
 
+Task("Dependencies-Analyse")
+    .Description("Runs the Dependencies Analyser on the solution.")
+    .Does(() => 
+    {
+        var settings = new DependenciesAnalyserSettings
+        {
+            Folder = sourceDir.Path.ToString()
+        };
+
+        Information("Analysing dependencies on folder '{0}'...", sourceDir.Path);
+        AnalyseDependencies(settings);
+        Information("'{0}' dependencies for the projects had been analysed.", sourceDir.Path);
+    });
+
 Task("AppVeyor-Pack")
     .Description("Prepares to pack the project, using AppVeyor.")
     .Does(() =>
     {
         var tagBuildEnvVar = EnvironmentVariable("APPVEYOR_REPO_TAG");
         bool.TryParse(tagBuildEnvVar, out createPackage);
+    });
+
+Task("Local-Pack")
+    .Description("Prepares to pack the project, using local environment.")
+    .Does(() =>
+    {
+        createPackage = true;
     });
 
 Task("Pack")
@@ -244,7 +268,20 @@ Task("Test-All")
 Task("Analyse")
     .Description("Analyse the solution.")
     .IsDependentOn("Build+Test")
+    .IsDependentOn("Dependencies-Analyse")
     .Does(() => { Information("Analyses done"); });    
+
+Task("LocalPack")
+    .Description("Runs locally.")
+    .IsDependentOn("Clean")
+    .IsDependentOn("Restore")
+    .IsDependentOn("SemVer")
+    .IsDependentOn("Build")
+    .IsDependentOn("Test-Unit")
+    .IsDependentOn("Dependencies-Analyse")
+    .IsDependentOn("Local-Pack")
+    .IsDependentOn("Pack")
+    .Does(() => { Information("Everything is done! Well done AppVeyor."); });
 
 Task("AppVeyor")
     .Description("Runs on AppVeyor after 'merging master'.")
@@ -253,6 +290,7 @@ Task("AppVeyor")
     .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
+    //.IsDependentOn("Dependencies-Analyse")
     .IsDependentOn("AppVeyor-Pack")
     .IsDependentOn("Pack")
     .Does(() => { Information("Everything is done! Well done AppVeyor."); });
