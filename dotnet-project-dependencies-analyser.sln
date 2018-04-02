@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{B7267F50-B971-4A80-82E8-46AAE7418DFF}"
+ProjectSection(SolutionItems) = preProject
+	LICENSE = LICENSE
+	README.md = README.md
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BB263020-F3DF-4740-92D2-3340D0A3A7AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A55E791E-AFC6-4BB3-8614-1B6CEF081C42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{5C6132F7-9FBF-458C-B0D5-CAD541BA2650}"
+ProjectSection(SolutionItems) = preProject
+	build.ps1 = build.ps1
+	build.sh = build.sh
+	build.cake = build.cake
+EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{BD83FF11-B91E-4467-BFBC-0FC0EFC40EA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyChecker.NuGet.Adapter", "src\DependencyChecker.NuGet.Adapter\DependencyChecker.NuGet.Adapter.csproj", "{121DD4C6-4C86-40F0-BFC9-53327E253348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests.Unit", "tests\Domain.Tests.Unit\Domain.Tests.Unit.csproj", "{29974DED-1FAA-415F-8C42-B358E241213A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD83FF11-B91E-4467-BFBC-0FC0EFC40EA1} = {BB263020-F3DF-4740-92D2-3340D0A3A7AE}
+		{121DD4C6-4C86-40F0-BFC9-53327E253348} = {BB263020-F3DF-4740-92D2-3340D0A3A7AE}
+		{29974DED-1FAA-415F-8C42-B358E241213A} = {A55E791E-AFC6-4BB3-8614-1B6CEF081C42}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD83FF11-B91E-4467-BFBC-0FC0EFC40EA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD83FF11-B91E-4467-BFBC-0FC0EFC40EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD83FF11-B91E-4467-BFBC-0FC0EFC40EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD83FF11-B91E-4467-BFBC-0FC0EFC40EA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{121DD4C6-4C86-40F0-BFC9-53327E253348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{121DD4C6-4C86-40F0-BFC9-53327E253348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{121DD4C6-4C86-40F0-BFC9-53327E253348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{121DD4C6-4C86-40F0-BFC9-53327E253348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29974DED-1FAA-415F-8C42-B358E241213A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29974DED-1FAA-415F-8C42-B358E241213A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29974DED-1FAA-415F-8C42-B358E241213A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29974DED-1FAA-415F-8C42-B358E241213A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

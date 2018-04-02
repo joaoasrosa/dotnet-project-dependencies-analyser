@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Authors>João Rosa</Authors>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
+        <FileVersion>0.1.0</FileVersion>
+        <Version>0.1.0+0</Version>
+        <Copyright>Copyright (c) 2018 João Rosa. MIT license</Copyright>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="FluentAssertions" Version="5.2.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170628-02"/>
+        <PackageReference Include="Semver" Version="2.0.4"/>
+        <PackageReference Include="xunit" Version="2.2.0"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\DependencyChecker.NuGet.Adapter\DependencyChecker.NuGet.Adapter.csproj"/>
+        <ProjectReference Include="..\..\src\Domain\Domain.csproj"/>
+    </ItemGroup>
+</Project>
