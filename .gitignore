@@ -286,3 +286,20 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# Cake
+tools/*
+tools/**/*
+
+# Nuget Packages
+**/*.nupkg
+
+# Rider
+.idea/
+*.*.iml
+
+# VSCode
+.vscode/
+
+# artifacts
+artifacts/
