@@ -14,5 +14,10 @@ namespace DotnetProjectDependenciesAnalyser.Domain
 
         public Name Name { get; }
         internal SemVersion Version { get; }
+
+        public override string ToString()
+        {
+            return Name.ToString();
+        }
     }
 }

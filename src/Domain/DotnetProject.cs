@@ -73,5 +73,10 @@ namespace DotnetProjectDependenciesAnalyser.Domain
         {
             return new DotnetProject(project);
         }
+
+        public override string ToString()
+        {
+            return File.ToString();
+        }
     }
 }
