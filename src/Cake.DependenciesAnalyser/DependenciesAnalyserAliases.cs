@@ -20,44 +20,52 @@ namespace Cake.DependenciesAnalyser
             this ICakeContext context,
             DependenciesAnalyserSettings settings)
         {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
-
-            if (settings == null)
-                throw new ArgumentNullException(nameof(settings));
-
-            var analyseDependencies = new AnalyseDependencies(
-                new AnalyserServicesFactory(
-                    new NugetDependencyChecker(
-                        new HttpClient()
-                    )
-                )
-            );
-
-            var report = analyseDependencies.Execute(
-                new AnalyseDependenciesSettings(
-                    string.IsNullOrWhiteSpace(settings.Project) ? null : (File?) settings.Project,
-                    string.IsNullOrWhiteSpace(settings.Folder) ? null : (Folder?) settings.Folder
-                )
-            );
-
-            foreach (var reportProjectDependency in report.ProjectDependencies)
+            try
             {
-                Console.WriteLine("---------------------------------");
-                Console.WriteLine(
-                    "Project: {0}",
-                    reportProjectDependency.Project);
-                
-                foreach (var dependencyReport in reportProjectDependency.Dependencies)
+                if (context == null)
+                    throw new ArgumentNullException(nameof(context));
+
+                if (settings == null)
+                    throw new ArgumentNullException(nameof(settings));
+
+                var analyseDependencies = new AnalyseDependencies(
+                    new AnalyserServicesFactory(
+                        new NugetDependencyChecker(
+                            new HttpClient()
+                        )
+                    )
+                );
+
+                var report = analyseDependencies.Execute(
+                    new AnalyseDependenciesSettings(
+                        string.IsNullOrWhiteSpace(settings.Project) ? null : (File?) settings.Project,
+                        string.IsNullOrWhiteSpace(settings.Folder) ? null : (Folder?) settings.Folder
+                    )
+                );
+
+                foreach (var reportProjectDependency in report.ProjectDependencies)
+                {
+                    Console.WriteLine("---------------------------------");
                     Console.WriteLine(
-                        "{0} is on version {1}. The dependency is {2}.",
-                        dependencyReport.Dependency,
-                        dependencyReport.LatestVersion,
-                        dependencyReport.HasNewerVersion ? "outdated" : "up-to-date"
-                    );
-                
-                Console.WriteLine("---------------------------------");
-                Console.WriteLine();
+                        "Project: {0}",
+                        reportProjectDependency.Project);
+
+                    foreach (var dependencyReport in reportProjectDependency.Dependencies)
+                        Console.WriteLine(
+                            "{0} is on version {1}. The dependency is {2}.",
+                            dependencyReport.Dependency,
+                            dependencyReport.LatestVersion,
+                            dependencyReport.HasNewerVersion ? "outdated" : "up-to-date"
+                        );
+
+                    Console.WriteLine("---------------------------------");
+                    Console.WriteLine();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
         }
     }
