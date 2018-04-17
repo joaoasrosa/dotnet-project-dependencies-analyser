@@ -1,5 +1,5 @@
 #tool "nuget:?package=GitVersion.CommandLine"
-#addin "nuget:?package=Cake.DependenciesAnalyser&version=0.1.5"
+#addin "nuget:?package=Cake.DependenciesAnalyser&version=0.1.6"
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -317,7 +317,7 @@ Task("AppVeyor")
     .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
-    //.IsDependentOn("Dependencies-Analyse")
+    .IsDependentOn("Dependencies-Analyse")
     .IsDependentOn("AppVeyor-Pack")
     .IsDependentOn("Publish")
     .IsDependentOn("Pack")

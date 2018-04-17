@@ -2,7 +2,7 @@
 <package>
     <metadata>
         <id>Cake.DependenciesAnalyser</id>
-        <version>0.1.7</version>
+        <version>1.0.7</version>
         <title>Cake.DependenciesAnalyser</title>
         <authors>João Rosa</authors>
         <owners>João Rosa</owners>
