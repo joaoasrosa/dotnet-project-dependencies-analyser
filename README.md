@@ -8,6 +8,7 @@ A Cake AddIn to analyse the NuGet dependencies of a C# project.
 
 The addin uses the information on the `csproj` or `packages.config` for the NuGet packages used in the project, doing a analysis:
 * Using the version of the package, verifies if a newer version is available
+* Produces a inline report with the NuGet dependencies versions listed
 
 ### Known limitations
 
@@ -49,6 +50,27 @@ The `DependenciesAnalyserSettings` have *one* mandatory option from *two* possib
 * `Folder` - The addin will recursive scan the folder for `csproj` and analyse them
 * `Project` - The addin will analyse the `csproj`
 
+### Report Sample
+
+```
+
+---------------------------------
+Project: ./src/Cake.DependenciesAnalyser/Cake.DependenciesAnalyser.csproj
+Cake.Core is on version 0.26.1. The dependency is up-to-date.
+Newtonsoft.Json is on version 11.0.2. The dependency is up-to-date.
+---------------------------------
+
+---------------------------------
+Project: ./src/DependencyChecker.NuGet.Adapter/DependencyChecker.NuGet.Adapter.csproj
+Newtonsoft.Json is on version 11.0.2. The dependency is up-to-date.
+Semver is on version 2.0.4. The dependency is up-to-date.
+---------------------------------
+
+---------------------------------
+Project: ./src/Domain/Domain.csproj
+Semver is on version 2.0.4. The dependency is up-to-date.
+---------------------------------
+```
 
 ## Built With
 

@@ -14,10 +14,10 @@
         <IncludeSymbols>true</IncludeSymbols>
         <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
         <PackageReleaseNotes>See https://github.com/joaoasrosa/dotnet-project-dependencies-analyser/blob/master/ReleaseNotes.md</PackageReleaseNotes>
-        <PackageVersion>1.0.7</PackageVersion>
-        <AssemblyVersion>1.0.7</AssemblyVersion>
-        <FileVersion>1.0.7</FileVersion>
-        <Version>1.0.7</Version>
+        <PackageVersion>1.0.8</PackageVersion>
+        <AssemblyVersion>1.0.8</AssemblyVersion>
+        <FileVersion>1.0.8</FileVersion>
+        <Version>1.0.8+6</Version>
         <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
         <RepositoryUrl>https://github.com/joaoasrosa/dotnet-project-dependencies-analyser</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
