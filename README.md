@@ -6,6 +6,14 @@ A Cake AddIn to analyse the NuGet dependencies of a C# project.
 [![NuGet](https://img.shields.io/nuget/v/Cake.DependenciesAnalyser.svg)](https://www.nuget.org/packages/Cake.DependenciesAnalyser)
 [![cakebuild.net](https://img.shields.io/badge/WWW-cakebuild.net-blue.svg)](http://cakebuild.net)
 
+The addin uses the information on the `csproj` or `packages.config` for the NuGet packages used in the project, doing a analysis:
+* Using the version of the package, verifies if a newer version is available
+
+### Known limitations
+
+* At the moment the addin *only* supports the public NuGet feed. We are working to bring another feeds.
+* We pretend to add a solution analyses to verify package references vs DLL references
+
 ## Usage
 
 ### Including the addin
@@ -56,10 +64,6 @@ Please read [CONTRIBUTING.md](https://github.com/joaoasrosa/cake-ndepend/blob/ma
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/joaoasrosa/pullrequests-viewer/tags). For the release notes, see the [release notes](https://github.com/joaoasrosa/pullrequests-viewer/blob/master/ReleaseNotes.md).
-
-## Known limitations
-
-At the moment the addin *only* supports the public NuGet feed. We are working to bring another feeds.
 
 ## Authors
 
