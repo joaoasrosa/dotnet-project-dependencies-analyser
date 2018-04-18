@@ -81,11 +81,11 @@ Semver is on version 2.0.4. The dependency is up-to-date.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/joaoasrosa/cake-ndepend/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/joaoasrosa/dotnet-project-dependencies-analyser/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/joaoasrosa/pullrequests-viewer/tags). For the release notes, see the [release notes](https://github.com/joaoasrosa/pullrequests-viewer/blob/master/ReleaseNotes.md).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/joaoasrosa/dotnet-project-dependencies-analyser/tags).
 
 ## Authors
 
