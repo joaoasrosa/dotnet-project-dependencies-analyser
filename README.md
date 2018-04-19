@@ -10,6 +10,28 @@ The addin uses the information on the `csproj` or `packages.config` for the NuGe
 * Using the version of the package, verifies if a newer version is available
 * Produces a inline report with the NuGet dependencies versions listed
 
+### Report Sample
+
+```
+
+---------------------------------
+Project: ./src/Cake.DependenciesAnalyser/Cake.DependenciesAnalyser.csproj
+Cake.Core is on version 0.26.1. The dependency is up-to-date.
+Newtonsoft.Json is on version 11.0.2. The dependency is up-to-date.
+---------------------------------
+
+---------------------------------
+Project: ./src/DependencyChecker.NuGet.Adapter/DependencyChecker.NuGet.Adapter.csproj
+Newtonsoft.Json is on version 11.0.2. The dependency is up-to-date.
+Semver is on version 2.0.4. The dependency is up-to-date.
+---------------------------------
+
+---------------------------------
+Project: ./src/Domain/Domain.csproj
+Semver is on version 2.0.4. The dependency is up-to-date.
+---------------------------------
+```
+
 ### Known limitations
 
 * At the moment the addin *only* supports the public NuGet feed. We are working to bring another feeds.
@@ -49,28 +71,6 @@ Task("Dependencies-Analyse")
 The `DependenciesAnalyserSettings` have *one* mandatory option from *two* possible options, `Folder` and `Project`.
 * `Folder` - The addin will recursive scan the folder for `csproj` and analyse them
 * `Project` - The addin will analyse the `csproj`
-
-### Report Sample
-
-```
-
----------------------------------
-Project: ./src/Cake.DependenciesAnalyser/Cake.DependenciesAnalyser.csproj
-Cake.Core is on version 0.26.1. The dependency is up-to-date.
-Newtonsoft.Json is on version 11.0.2. The dependency is up-to-date.
----------------------------------
-
----------------------------------
-Project: ./src/DependencyChecker.NuGet.Adapter/DependencyChecker.NuGet.Adapter.csproj
-Newtonsoft.Json is on version 11.0.2. The dependency is up-to-date.
-Semver is on version 2.0.4. The dependency is up-to-date.
----------------------------------
-
----------------------------------
-Project: ./src/Domain/Domain.csproj
-Semver is on version 2.0.4. The dependency is up-to-date.
----------------------------------
-```
 
 ## Built With
 
