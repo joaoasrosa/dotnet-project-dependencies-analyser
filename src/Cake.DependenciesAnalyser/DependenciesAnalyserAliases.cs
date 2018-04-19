@@ -13,9 +13,15 @@ namespace Cake.DependenciesAnalyser
         /// <summary>
         ///     Analyses a the dependencies of a project(s).
         /// </summary>
+        /// <example>
+        /// <code>
+        /// var path = MakeAbsolute(Directory("./resources"));
+        /// </code>
+        /// </example>
         /// <param name="context">The Cake context.</param>
         /// <param name="settings">The settings.</param>
         [CakeMethodAlias]
+        [CakeAliasCategory("Dependencies Analyser")]
         public static void AnalyseDependencies(
             this ICakeContext context,
             DependenciesAnalyserSettings settings)
