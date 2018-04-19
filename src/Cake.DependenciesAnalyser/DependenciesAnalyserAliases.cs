@@ -14,9 +14,13 @@ namespace Cake.DependenciesAnalyser
         ///     Analyses a the dependencies of a project(s).
         /// </summary>
         /// <example>
-        /// <code>
-        /// var path = MakeAbsolute(Directory("./resources"));
-        /// </code>
+        ///     <code>
+        /// var settings = new DependenciesAnalyserSettings
+        /// {
+        ///     Folder = "./src/"
+        /// };
+        /// AnalyseDependencies(settings);
+        ///  </code>
         /// </example>
         /// <param name="context">The Cake context.</param>
         /// <param name="settings">The settings.</param>
