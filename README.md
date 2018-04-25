@@ -34,7 +34,6 @@ Semver is on version 2.0.4. The dependency is up-to-date.
 
 ### Known limitations
 
-* At the moment the addin *only* supports the public NuGet feed. We are working to bring another feeds.
 * We pretend to add a solution analyses to verify package references vs DLL references
 
 ## Usage
