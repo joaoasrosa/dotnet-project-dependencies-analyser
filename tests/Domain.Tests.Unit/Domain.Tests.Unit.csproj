@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
-        <IsPackable>false</IsPackable>
-    </PropertyGroup>
-    <PropertyGroup>
-        <Authors>João Rosa</Authors>
-        <AssemblyVersion>1.0.8</AssemblyVersion>
-        <FileVersion>1.0.8</FileVersion>
-        <Version>1.0.8+6</Version>
-        <Copyright>Copyright (c) 2018 João Rosa. MIT license</Copyright>
-    </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="FluentAssertions" Version="5.2.0" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.6.2" />
-        <PackageReference Include="Semver" Version="2.0.4" />
-        <PackageReference Include="xunit" Version="2.3.1" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
-    </ItemGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\..\src\DependencyChecker.NuGet.Adapter\DependencyChecker.NuGet.Adapter.csproj" />
-        <ProjectReference Include="..\..\src\Domain\Domain.csproj" />
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Authors>João Rosa</Authors>
+    <AssemblyVersion>1.0.8</AssemblyVersion>
+    <FileVersion>1.0.8</FileVersion>
+    <Version>1.0.8+6</Version>
+    <Copyright>Copyright (c) 2018 João Rosa. MIT license</Copyright>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.3.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="Semver" Version="2.0.4" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DependencyChecker.NuGet.Adapter\DependencyChecker.NuGet.Adapter.csproj" />
+    <ProjectReference Include="..\..\src\Domain\Domain.csproj" />
+  </ItemGroup>
 </Project>

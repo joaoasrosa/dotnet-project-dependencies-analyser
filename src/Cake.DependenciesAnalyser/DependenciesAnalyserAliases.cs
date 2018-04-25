@@ -2,7 +2,7 @@
 using System.Net.Http;
 using Cake.Core;
 using Cake.Core.Annotations;
-using DependencyChecker.NuGet.Adapter;
+using DependencyChecker.Nuget.Adapter;
 using DotnetProjectDependenciesAnalyser.Domain;
 
 namespace Cake.DependenciesAnalyser
@@ -38,9 +38,7 @@ namespace Cake.DependenciesAnalyser
 
             var analyseDependencies = new AnalyseDependencies(
                 new AnalyserServicesFactory(
-                    new NugetDependencyChecker(
-                        new HttpClient()
-                    )
+                    new NugetDependencyChecker()
                 )
             );
 

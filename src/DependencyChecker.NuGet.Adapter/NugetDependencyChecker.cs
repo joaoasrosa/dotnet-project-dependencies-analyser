@@ -1,39 +1,68 @@
-﻿using System.Net.Http;
-using DependencyChecker.NuGet.Adapter.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading;
 using DotnetProjectDependenciesAnalyser.Domain;
-using Newtonsoft.Json;
+using NuGet.Common;
+using NuGet.Configuration;
+using NuGet.Protocol;
+using NuGet.Protocol.Core.Types;
+using Semver;
 
-namespace DependencyChecker.NuGet.Adapter
+namespace DependencyChecker.Nuget.Adapter
 {
     public class NugetDependencyChecker : IDependencyChecker
     {
-        private readonly HttpClient _httpClient;
-
-        public NugetDependencyChecker(
-            HttpClient httpClient)
-        {
-            _httpClient = httpClient;
-            // TODO: add telemetry (opt-in or opt-out?)
-        }
-
         public Dependency? VerifyLastestVersion(
             Dependency dependency)
         {
-            // TODO: get all the feeds in the system, and use them.
-            // TODO: add resilience
-            var response = _httpClient.GetAsync(
-                    $"https://api-v2v3search-0.nuget.org/query?q={dependency.Name}"
-                )
-                .Result;
-
-            // TODO: and if it fails?
-            response.EnsureSuccessStatusCode();
-
-            var result = JsonConvert.DeserializeObject<NugetResponse>(
-                response.Content.ReadAsStringAsync().Result
+            var providers = new List<Lazy<INuGetResourceProvider>>();
+            providers.AddRange(
+                Repository.Provider.GetCoreV3()
             );
 
-            return result?.ToDomain();
+            var settings = Settings.LoadDefaultSettings(
+                Directory.GetCurrentDirectory(),
+                null,
+                new XPlatMachineWideSetting());
+
+            var packageSourceProvider = new PackageSourceProvider(settings);
+            var packageSources = packageSourceProvider.LoadPackageSources();
+
+            var results = new List<IPackageSearchMetadata>();
+
+            foreach (var packageSource in packageSources)
+            {
+                var sourceRepository = new SourceRepository(
+                    packageSource,
+                    providers
+                );
+
+                var packageMetadataResource = sourceRepository.GetResourceAsync<PackageMetadataResource>(
+                    CancellationToken.None
+                ).Result;
+
+                var result = packageMetadataResource.GetMetadataAsync(
+                    dependency.Name,
+                    false,
+                    true,
+                    new NullSourceCacheContext(),
+                    NullLogger.Instance,
+                    CancellationToken.None
+                ).Result;
+
+                results.AddRange(result);
+            }
+
+            var latest = results.OrderByDescending(x => x.Identity.Version).FirstOrDefault();
+
+            if (latest == null)
+                return null;
+
+            return new Dependency(
+                (Name) latest.Identity.Id,
+                SemVersion.Parse(latest.Identity.Version.ToNormalizedString()));
         }
     }
 }
