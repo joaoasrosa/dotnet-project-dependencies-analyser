@@ -73,14 +73,14 @@ The `DependenciesAnalyserSettings` have *one* mandatory option from *two* possib
 
 ## Built With
 
-* [.NET Framework 4.6 & .NET Core 2.0](https://www.microsoft.com/net/download) - The Framework(s)
+* [.NET Core 2.0](https://www.microsoft.com/net/download) - The Framework(s)
 * [NuGet](https://www.nuget.org/) - Dependency Management
 * [Cake](http://cakebuild.net/) - Cross Platform Build Automation System
 * [AppVeyor](https://www.appveyor.com/) - Continuous Integration & Delivery Service
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/joaoasrosa/dotnet-project-dependencies-analyser/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/joaoasrosa/dotnet-project-dependencies-analyser/blob/master/docs/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
