@@ -1,5 +1,5 @@
 #tool "nuget:?package=GitVersion.CommandLine"
-#addin "nuget:?package=Cake.DependenciesAnalyser&version=0.1.8"
+#addin "nuget:?package=Cake.DependenciesAnalyser&version=2.0.0"
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
