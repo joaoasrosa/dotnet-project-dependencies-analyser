@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
     <metadata>
         <id>Cake.DependenciesAnalyser</id>
@@ -8,9 +8,7 @@
         <owners>João Rosa</owners>
         <licenseUrl>https://github.com/joaoasrosa/dotnet-project-dependencies-analyser/blob/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/joaoasrosa/dotnet-project-dependencies-analyser</projectUrl>
-        <iconUrl>
-            https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png
-        </iconUrl>
+        <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Cake Build addin for check the dependencies of a project.</description>
         <releaseNotes>See
