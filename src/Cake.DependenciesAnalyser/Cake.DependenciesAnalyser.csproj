@@ -24,7 +24,7 @@
     <Copyright>Copyright (c) 2018 João Rosa. MIT license</Copyright>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.27.1" />
+    <PackageReference Include="Cake.Core" Version="0.34.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
   <ItemGroup>
