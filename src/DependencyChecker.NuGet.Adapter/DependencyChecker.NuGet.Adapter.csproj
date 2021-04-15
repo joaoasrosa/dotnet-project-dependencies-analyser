@@ -19,7 +19,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="NuGet.Commands" Version="4.6.4" />
+    <PackageReference Include="NuGet.Commands" Version="5.9.1" />
     <PackageReference Include="Semver" Version="2.0.4" />
   </ItemGroup>
 </Project>
